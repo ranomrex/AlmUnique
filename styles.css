@@ -1,0 +1,114 @@
+/* --- 1. Base Setup & Variables --- */
+:root {
+    --primary-blue: #2563eb;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --bg-soft: #f8fafc;
+}
+
+/* Smooth Scrolling for Anchor Links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection color (The "Highlight" color when a user selects text) */
+::selection {
+    background-color: #dbeafe;
+    color: var(--primary-blue);
+}
+
+/* --- 2. Advanced Typography --- */
+
+/* Drop Cap for the first letter of the interview */
+.prose > div > p:first-of-type::first-letter {
+    float: left;
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    line-height: 1;
+    padding-top: 4px;
+    padding-right: 12px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* Pull Quote Styling */
+blockquote {
+    position: relative;
+    border-left: none !important; /* Overriding default */
+}
+
+blockquote::before {
+    content: "“";
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--primary-blue);
+    opacity: 0.15;
+}
+
+/* --- 3. UI Components --- */
+
+/* Sticky Navigation Blur (Fallback for browsers that don't support backdrop-filter) */
+nav {
+    transition: background-color 0.3s ease;
+}
+
+/* Article Card Hover Effects */
+.group:hover .group-hover\:scale-105 {
+    transform: scale(1.05);
+}
+
+/* Custom Scrollbar for a cleaner look */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-soft);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* --- 4. Interactive Elements --- */
+
+/* Subscription Button Pulse Animation */
+@keyframes soft-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.subscribe-btn-animate {
+    animation: soft-pulse 3s infinite ease-in-out;
+}
+
+/* Fade-in for images when they load */
+img {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* --- 5. Mobile Optimizations --- */
+@media (max-width: 768px) {
+    .prose > div > p:first-of-type::first-letter {
+        font-size: 3.5rem;
+    }
+    
+    blockquote {
+        font-size: 1.5rem !important;
+        margin: 2rem 0 !important;
+    }
+}
